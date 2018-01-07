@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lk1314.mapper.UserMapper">
+
+    <sql id="UserColumns">
+        a.id,
+        a.username,
+        a.password,
+        address.id,
+        address.address
+    </sql>
+
+    <sql id="UserJoins">
+       LEFT JOIN test_address address ON a.addr_id = address.id
+    </sql>
+
+
+    <select id="get" resultType="User" >
+        SELECT
+        <include refid="UserColumns"/>
+        FROM test_user a
+        WHERE a.id = #{userId}
+    </select>
+
+    <resultMap id="UserResultMap" type="User">
+        <id column="id" property="userId"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="password"/>
+
+        <association property="address" javaType="Address">
+            <id column="id" property="addrId"/>
+            <result column="address" property="address"/>
+        </association>
+
+    </resultMap>
+
+    <select id="findList" resultMap="UserResultMap">
+        SELECT
+        <include refid="UserColumns"/>
+        FROM  test_user a
+        <include refid="UserJoins"/>
+        <where>
+            <if test="userId != null and userId != ''">
+                AND a.id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <!--物理删除-->
+    <update id="delete">
+        DELETE FROM test_user
+        WHERE id = #{userId}
+    </update>
+
+    <!--逻辑删除-->
+    <!--<update id="deleteByLogic">-->
+        <!--UPDATE dbd_terminal SET-->
+        <!--del_flag = #{DEL_FLAG_DELETE}-->
+        <!--WHERE id = #{id}-->
+    <!--</update>-->
+
+
+    <!-- 根据实体名称和字段名称和字段值获取唯一记录 -->
+    <select id="findUniqueByProperty" resultType="User" statementType="STATEMENT">
+        select * FROM test_user where ${propertyName} = '${value}'
+    </select>
+
+    <resultMap id="RolesAndPermsResultMap" type="User">
+
+        <id column="id" property="userId"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="password"/>
+
+        <collection property="roleList" ofType="Role">
+            <id column="rId" property="id"/>
+            <result column="rolename" property="roleName"/>
+
+            <collection property="permissionList" ofType="Permission">
+                <id column="pId" property="id"/>
+                <result column="permname" property="permName"/>
+            </collection>
+
+        </collection>
+    </resultMap>
+
+    <select id="selectRolesAndPermsByName" resultMap="RolesAndPermsResultMap" parameterType="java.lang.String">
+        SELECT
+        u.*, r.id rId, r.rolename, p.id pId, p.permname
+        FROM  test_user u, test_role r, test_user_role ur, test_permission p
+        WHERE u.id = ur.user_id AND r.id = ur.role_id
+        AND r.id = p.role_id AND u.username = #{name}
+    </select>
+
+</mapper>
