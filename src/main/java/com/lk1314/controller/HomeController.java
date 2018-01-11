@@ -50,8 +50,8 @@ public class HomeController {
         return "redirect:/login";
     }
 
-    @RequestMapping("/403")
+    @RequestMapping("/404")
     public String unauthorizedRole(){
-        return "/403";
+        return "/404";
     }
 }
