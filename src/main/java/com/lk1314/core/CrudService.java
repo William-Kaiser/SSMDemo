@@ -14,7 +14,7 @@ import java.util.List;
  * @author jeeplus
  * @version 2017-05-16
  */
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, rollbackFor = Exception.class)
 public abstract class CrudService<M extends BaseMapper<T>, T extends BaseEntity> extends BaseService {
 	
 	/**
@@ -63,7 +63,7 @@ public abstract class CrudService<M extends BaseMapper<T>, T extends BaseEntity>
 	 * 更新数据
 	 * @param entity
 	 */
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public void update(T entity) {
 		mapper.update(entity);
 	}
@@ -72,7 +72,7 @@ public abstract class CrudService<M extends BaseMapper<T>, T extends BaseEntity>
 	 * 删除数据
 	 * @param entity
 	 */
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public void delete(T entity) {
 		mapper.delete(entity);
 	}
@@ -82,7 +82,7 @@ public abstract class CrudService<M extends BaseMapper<T>, T extends BaseEntity>
 	 * 删除全部数据
 	 * @param entitys
 	 */
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public void deleteAll(Collection<T> entitys) {
 		for (T entity : entitys) {
 			mapper.delete(entity);
@@ -93,7 +93,7 @@ public abstract class CrudService<M extends BaseMapper<T>, T extends BaseEntity>
 	 * 删除全部数据
 	 * @param entitys
 	 */
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public void deleteAllByLogic(Collection<T> entitys) {
 		for (T entity : entitys) {
 			mapper.deleteByLogic(entity);

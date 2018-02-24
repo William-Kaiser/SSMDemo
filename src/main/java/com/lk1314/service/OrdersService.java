@@ -16,7 +16,7 @@ import java.util.List;
  * @author liankai
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, rollbackFor = Exception.class)
 public class OrdersService extends CrudService<OrdersMapper, Orders> {
 
 	@Override
@@ -30,19 +30,19 @@ public class OrdersService extends CrudService<OrdersMapper, Orders> {
 	}
 
 	@Override
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false,rollbackFor = Exception.class)
 	public void save(Orders entity) {
 		super.save(entity);
 	}
 
 	@Override
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false,rollbackFor = Exception.class)
 	public void update(Orders entity) {
 		super.update(entity);
 	}
 
 	@Override
-	@Transactional(readOnly = false)
+	@Transactional(readOnly = false,rollbackFor = Exception.class)
 	public void delete(Orders entity) {
 		super.delete(entity);
 	}

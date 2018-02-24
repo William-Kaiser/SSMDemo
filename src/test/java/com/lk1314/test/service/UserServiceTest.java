@@ -53,14 +53,30 @@ public class UserServiceTest extends BaseTest {
                 .setInclude(tableNames);//修改替换成你需要的表名，多个表名传数组
         config.setActiveRecord(true)
                 .setAuthor("william")
-                .setOutputDir("d:\\codeGen")
+                .setOutputDir("D:\\IdeaProject\\SSMDemo\\src\\main\\java")
                 .setFileOverride(true);
+        // 自定义文件命名，注意 %s 会自动填充表实体属性！
+        config.setMapperName("%sMapper");
+        config.setXmlName("%sMapper");
+        config.setServiceName("%sService");
+        config.setServiceImplName("%sServiceImpl");
+        config.setControllerName("%sController");
         if (!serviceNameStartWithI) {
             config.setServiceName("%sService");
         }
+        PackageConfig pc = new PackageConfig();
+        pc.setParent(null);
+        pc.setEntity("com.lk1314.entity");
+        pc.setMapper("com.lk1314.mapper");
+        pc.setXml("com.lk1314.mapper");
+        pc.setService("com.lk1314.service");
+        pc.setServiceImpl("com.lk1314.service.impl");
+        pc.setController("com.lk1314.controller");
+
         new AutoGenerator().setGlobalConfig(config)
                 .setDataSource(dataSourceConfig)
                 .setStrategy(strategyConfig)
+                .setPackageInfo(pc)
                 .setPackageInfo(
                         new PackageConfig()
                                 .setParent(packageName)
