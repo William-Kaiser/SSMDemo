@@ -31,7 +31,7 @@ public class UserServiceTest extends BaseTest {
     public void generateCode(){
         String packageName = "com.lk1314.generator";
         boolean serviceNameStartWithI = true;//user -> UserService, 设置成true: user -> IUserService
-        generateByTables(serviceNameStartWithI,packageName, "test_role","test_user");
+        //generateByTables(serviceNameStartWithI,packageName, "test_role","test_user");
     }
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames){
