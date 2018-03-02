@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <c:redirect url="/login"></c:redirect>
+    <c:redirect url="/ssm/login"></c:redirect>
 </head>
 <body>
 
