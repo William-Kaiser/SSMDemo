@@ -23,12 +23,12 @@ public class HomeController {
         return "/login";
     }
 
-    @RequestMapping(value="/ssm/login",method=RequestMethod.POST)
+    @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(User user, RedirectAttributes redirectAttributes){
         try {
             //使用权限工具进行用户登录，登录成功后跳到shiro配置的successUrl中
             SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));
-            return "redirect:/ssm/user/userInfo/1";
+            return "redirect:/user/userInfo/1";
         } catch (AuthenticationException e) {
             redirectAttributes.addFlashAttribute("message","用户名或密码错误");
             return "redirect:/login";
