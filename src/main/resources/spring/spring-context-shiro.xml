@@ -9,7 +9,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
         <!-- ref对应我们写的realm  MyShiro -->
         <property name="realm" ref="myRealm"/>
         <!-- 使用下面配置的缓存管理器 -->
-        <property name="cacheManager" ref="shiroEacheManager"/>
+        <property name="cacheManager" ref="cacheManager"/>
     </bean>
 
     <bean id="myRealm" class="com.lk1314.security.MyRealm"/>
@@ -43,11 +43,11 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
         </property>
     </bean>
 
-    <bean id="shiroEacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
-    </bean>
+    <!--<bean id="shiroEacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
+        <!--<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>-->
+    <!--</bean>-->
 
-    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
 </beans>
