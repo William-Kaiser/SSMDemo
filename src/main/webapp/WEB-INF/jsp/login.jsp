@@ -8,7 +8,7 @@
 
 <body>
 <h1>登录页面</h1>
-<form:form action="/login" commandName="user" method="post">
+<form:form action="/ssm/login" commandName="user" method="post">
     用户名：<form:input path="userName"/>
     密码：<form:password path="password"/>
     <form:button name="button">提交</form:button>
