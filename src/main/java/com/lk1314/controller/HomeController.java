@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 
 @Controller
-@RequestMapping(value="/ssm")
 public class HomeController {
 
     @RequestMapping(value="/login",method=RequestMethod.GET)
