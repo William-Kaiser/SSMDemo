@@ -18,11 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value="/ssm")
 public class HomeController {
 
-    @RequestMapping(value="/index",method=RequestMethod.GET)
-    public String index(){
-        return "/index";
-    }
-
     @RequestMapping(value="/login",method=RequestMethod.GET)
     public String loginForm(Model model){
         model.addAttribute("user", new User());
