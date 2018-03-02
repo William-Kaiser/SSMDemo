@@ -16,7 +16,7 @@ import java.util.List;
  * @author liankai
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/ssm/user")
 public class UserController extends BaseController {
 
     @Autowired
