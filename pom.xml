@@ -195,6 +195,19 @@
       <version>${ehcache.version}</version>
     </dependency>
 
+    <!-- AOP begin -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.7.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.7.4</version>
+    </dependency>
+    <!-- AOP end -->
+
 </dependencies>
 
   <!-- 配置可变版本号 -->

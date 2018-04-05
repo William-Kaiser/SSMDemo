@@ -1,5 +1,6 @@
 package com.lk1314.controller;
 
+import com.lk1314.aop.DataSource;
 import com.lk1314.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -23,6 +24,7 @@ public class HomeController {
         return "/login";
     }
 
+    @DataSource(name = "11111")
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(User user, RedirectAttributes redirectAttributes){
         try {
