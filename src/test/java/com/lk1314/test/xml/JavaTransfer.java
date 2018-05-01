@@ -20,5 +20,18 @@ public class JavaTransfer {
 			e.printStackTrace();
 		}
 
+//		File file = new File("D:\\徐工道路三阶段发动机功能机.xml");
+//		JAXBContext context = null;
+//		FuncInfoSet funcInfoSet = null;
+//		try {
+//			context = JAXBContext.newInstance(FuncInfoSet.class);
+//			Unmarshaller unmarshaller = context.createUnmarshaller();
+//			funcInfoSet = (FuncInfoSet) unmarshaller.unmarshal(file);
+//			System.out.println("funcInfoSet="+funcInfoSet);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
+
 	}
 }
